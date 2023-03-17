@@ -546,3 +546,17 @@ export function generate(uuid) {
       .then((e) => dispatch({ type: "CLAIM_PRINT_DONE" }));
   };
 }
+
+export function fetchClaimAttachment(claim_uuid) {
+  let filters = []
+    filters.push(`claimUuid: "${claim_uuid}"`)
+  console.log("This is the Claim Uuid from the query", claim_uuid);
+  let projections = [
+    "id", "claim{code, id, uuid}", "type", "title", "filename"
+  ]
+  const payload = formatPageQuery("claimAttachmentsDetails",
+  filters,
+  projections
+  );
+  return graphql(payload, 'CLAIM_CLAIM_ATTACHMENT');
+}
