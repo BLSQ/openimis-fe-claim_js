@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { injectIntl } from 'react-intl';
 import { bindActionCreators } from "redux";
 import { formatMessageWithValues, withModulesManager, withHistory, Table, ProgressOrError } from "@openimis/fe-core";
-import { fetchClaimAttachment, downloadAttachment } from "../actions";
+import { fetchClaimAttachments, downloadAttachment } from "../actions";
 import { Paper, Link } from "@material-ui/core";
 
 
@@ -33,10 +33,10 @@ class ClaimAttachmentPanel extends Component {
         this.rowsPerPageOptions = props.modulesManager.getConf("fe-claim", "claimFilter.rowsPerPageOptions", [10, 20, 50, 100]);
         this.defaultPageSize = props.modulesManager.getConf("fe-claim", "claimFilter.defaultPageSize", 10);
     }
-    
+
     query = () =>{
         console.log(this.props)
-        this.props.fetchClaimAttachment(this.props.edited_id);
+        this.props.fetchClaimAttachments(this.props.edited_id);
     }
 
     onChangeRowsPerPage = (cnt) =>{
@@ -81,7 +81,7 @@ class ClaimAttachmentPanel extends Component {
     }
 
     onChangePage = (page, nbr) => {
-       
+
         if (nbr > this.state.page) {
             this.setState((state, props) => ({
                 page: this.state.page + 1,
@@ -106,7 +106,7 @@ class ClaimAttachmentPanel extends Component {
     download = (a) => {
         this.props.downloadAttachment(a);
     };
-    
+
     fileSelected = (f, i) => {
         if (!!f.target.files) {
           const file = f.target.files[0];
@@ -115,7 +115,7 @@ class ClaimAttachmentPanel extends Component {
           claimAttachments[i].mime = file.type;
         }
     };
-    
+
     formatFileName(a, i) {
         if (!!a.id)
           return (
@@ -158,7 +158,7 @@ class ClaimAttachmentPanel extends Component {
 
                 <Paper className={classes.paper}><Table
                     module="programs"
-                    fetch={this.props.fetchClaimAttachment}
+                    fetch={this.props.fetchClaimAttachments}
                     header={formatMessageWithValues(intl, "claim", "claim.table")}
                     headers={headers}
                     itemFormatters={itemFormatters}
@@ -187,8 +187,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-    
-    return bindActionCreators({ fetchClaimAttachment, downloadAttachment, }, dispatch);
+
+    return bindActionCreators({ fetchClaimAttachments, downloadAttachment, }, dispatch);
 };
 
 

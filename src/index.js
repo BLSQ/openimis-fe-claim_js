@@ -15,6 +15,7 @@ import ClaimMasterPanelExt from "./components/ClaimMasterPanelExt";
 import AttachmentsDialog from "./components/AttachmentsDialog";
 import messages_en from "./translations/en.json";
 import reducer from "./reducer";
+import ClaimFilterbyAttachment from "./components/ClaimFilterbyAttachment";
 
 const ROUTE_HEALTH_FACILITIES = "claim/healthFacilities";
 const ROUTE_CLAIM_EDIT = "claim/claim";
@@ -69,6 +70,7 @@ const DEFAULT_CONFIG = {
   ],
   "core.MainMenu": [ClaimMainMenu],
   "claim.MasterPanel": [ClaimMasterPanelExt],
+  "claim.Filter" : [ClaimFilterbyAttachment],
 };
 
 export const ClaimModule = (cfg) => {
