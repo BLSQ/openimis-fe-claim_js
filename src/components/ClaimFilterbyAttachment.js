@@ -20,14 +20,14 @@ class ClaimFilterbyAttachment extends Component {
             <Grid item xs={3} className={classes.item}>
                 <TextInput
                     module="claim"
-                    label="ClaimFilter.attachmentType"
+                    label="claim.filter.attachments.type"
                     name="type"
                     value={filters["type"] && filters["type"]["value"]}
                     onChange={(v) => onChangeFilters([
                         {
                             id: "type",
                             value: v,
-                            filter: !!v ? `attachments_Type: "${v}"` : null,
+                            filter: !!v ? `attachments_Type_Icontains: "${v}"` : null,
                         },
                     ])}
                 />
@@ -35,14 +35,14 @@ class ClaimFilterbyAttachment extends Component {
             <Grid item xs={3} className={classes.item}>
                 <TextInput
                     module="claim"
-                    label="ClaimFilter.attachmentTitle"
+                    label="claim.filter.attachments.title"
                     name="title"
                     value={filters["title"] && filters["title"]["value"]}
                     onChange={(v) => onChangeFilters([
                         {
                             id: "title",
                             value: v,
-                            filter: !!v ? `attachments_Title: "${v}"` : null,
+                            filter: !!v ? `attachments_Title_Icontains: "${v}"` : null,
                         },
                     ])}
                 />

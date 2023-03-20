@@ -51,7 +51,7 @@ class ClaimAttachmentPanel extends Component {
     }
 
     componentDidMount() {
-        this.setState({ orderBy: null }, e => this.onChangeRowsPerPage(this.defaultPageSize))
+      this.setState({ orderBy: null }, e => this.onChangeRowsPerPage(this.defaultPageSize))
     }
 
     claimChanged = (prevProps) => (!prevProps.claim && !!this.props.claim) ||
@@ -133,18 +133,19 @@ class ClaimAttachmentPanel extends Component {
     }
 
     render() {
-        const { intl, classes, edited_id, fetchingClaimAttachments, errorClaimAttachments, claimAttachments, rights } = this.props;
+        const { intl, classes, fetchingClaimAttachments, errorClaimAttachments, claimAttachments } = this.props;
 
         let headers = [
-            "claimAttachments.type",
-            "claimAttachments.title",
-            "claimAttachments.filename",
-
+            "claim.attachments.table.type",
+            "claim.attachments.table.title",
+            "claim.attachments.table.date",
+            "claim.attachments.table.filename",
         ]
 
         let itemFormatters = [
             e => e.type,
             e => e.title,
+            e => e.date,
             // e => e.filename,
             (a, i) => this.formatFileName(a, i),
 
@@ -159,7 +160,7 @@ class ClaimAttachmentPanel extends Component {
                 <Paper className={classes.paper}><Table
                     module="programs"
                     fetch={this.props.fetchClaimAttachments}
-                    header={formatMessageWithValues(intl, "claim", "claim.table")}
+                    header={formatMessageWithValues(intl, "claim", "claim.attachments.table")}
                     headers={headers}
                     itemFormatters={itemFormatters}
                     items={claimAttachments}

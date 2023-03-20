@@ -226,5 +226,12 @@
   "claim.medicalService": "Medical Service",
   "claim.ClaimFilter.processedDateFrom": "Processed From",
   "claim.ClaimFilter.processedDateTo": "Processed To",
-  "claim.claimSummaries.processedDate": "Processed On"
+  "claim.claimSummaries.processedDate": "Processed On",
+  "claim.attachments.table": "Claim Attachments",
+  "claim.attachments.table.type": "Attachment Type",
+  "claim.attachments.table.title": "Attachment Title",
+  "claim.attachments.table.filename": "Attachment File Name",
+  "claim.attachments.table.date": "Attachment Upload Date",
+  "claim.filter.attachments.title": "Attachment Title",
+  "claim.filter.attachments.type": "Attachment Type"
 }
