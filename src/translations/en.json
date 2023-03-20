@@ -229,10 +229,18 @@
   "claim.ClaimFilter.processedDateFrom": "Processed From",
   "claim.ClaimFilter.processedDateTo": "Processed To",
   "claim.claimSummaries.processedDate": "Processed On",
+<<<<<<< HEAD
   "claim.edit.items.pricevaluated": "Valuated",
   "claim.edit.services.pricevaluated": "Valuated",
   "claim.ClaimPercentageReferralsReport.region": "Region",
   "claim.ClaimPercentageReferralsReport.district": "District",
   "claim.ClaimPercentageReferralsReport.dateStart": "Date From",
-  "claim.ClaimPercentageReferralsReport.dateEnd": "Date To"
+  "claim.ClaimPercentageReferralsReport.dateEnd": "Date To",
+  "claim.attachments.table": "Claim Attachments",
+  "claim.attachments.table.type": "Attachment Type",
+  "claim.attachments.table.title": "Attachment Title",
+  "claim.attachments.table.filename": "Attachment File Name",
+  "claim.attachments.table.date": "Attachment Upload Date",
+  "claim.filter.attachments.title": "Attachment Title",
+  "claim.filter.attachments.type": "Attachment Type"
 }

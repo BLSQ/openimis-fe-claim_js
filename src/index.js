@@ -17,7 +17,7 @@ import messages_en from "./translations/en.json";
 import reducer from "./reducer";
 import { decodeId } from "@openimis/fe-core";
 import ClaimPercentageReferralsReport from "./reports/ClaimPercentageReferralsReport";
-
+import ClaimFilterbyAttachment from "./components/ClaimFilterbyAttachment";
 
 const ROUTE_HEALTH_FACILITIES = "claim/healthFacilities";
 const ROUTE_CLAIM_EDIT = "claim/healthFacilities/claim";
@@ -87,6 +87,7 @@ const DEFAULT_CONFIG = {
   ],
   "core.MainMenu": [ClaimMainMenu],
   "claim.MasterPanel": [ClaimMasterPanelExt],
+  "claim.Filter" : [ClaimFilterbyAttachment],
 };
 
 export const ClaimModule = (cfg) => {
