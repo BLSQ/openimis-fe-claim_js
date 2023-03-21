@@ -36,7 +36,7 @@ class ClaimAttachmentPanel extends Component {
 
     query = () =>{
         console.log(this.props)
-        this.props.fetchClaimAttachments(this.props.edited_id);
+        this.props.fetchClaimAttachments(this.props.edited);
     }
 
     onChangeRowsPerPage = (cnt) =>{
@@ -159,7 +159,7 @@ class ClaimAttachmentPanel extends Component {
 
                 <Paper className={classes.paper}><Table
                     module="programs"
-                    fetch={this.props.fetchClaimAttachments}
+                    //fetch={this.props.fetchClaimAttachments}
                     header={formatMessageWithValues(intl, "claim", "claim.attachments.table")}
                     headers={headers}
                     itemFormatters={itemFormatters}
