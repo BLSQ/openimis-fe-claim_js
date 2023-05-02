@@ -35,8 +35,9 @@ class ClaimAttachmentPanel extends Component {
     }
 
     query = () =>{
-        console.log(this.props)
-        this.props.fetchClaimAttachments(this.props.edited);
+        if (this.props.edited) {
+          this.props.fetchClaimAttachments(this.props.edited);
+        }
     }
 
     onChangeRowsPerPage = (cnt) =>{

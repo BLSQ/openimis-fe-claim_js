@@ -43,12 +43,16 @@ export function validateClaimCode(code) {
 }
 
 export function fetchClaimAttachments(claim) {
-  const payload = formatPageQuery(
-    "claimAttachments",
-    [`claim_Uuid: "${claim.uuid}"`],
-    ["id", "type", "title", "date", "filename", "mime"],
-  );
-  return graphql(payload, "CLAIM_CLAIM_ATTACHMENTS");
+  if (claim && claim.uuid) {
+    const payload = formatPageQuery(
+      "claimAttachments",
+      [`claim_Uuid: "${claim.uuid}"`],
+      ["id", "type", "title", "date", "filename", "mime"],
+    );
+    return graphql(payload, "CLAIM_CLAIM_ATTACHMENTS");
+  } else {
+    return { type: "CLAIM_CLAIM_ATTACHMENTS", payload: { data: [] } };
+  }
 }
 
 export function formatAttachment(attach) {
