@@ -18,6 +18,7 @@
   "claim.ClaimFilter.district": "District",
   "claim.claimStatus": "Claim Status",
   "claim.code": "Claim No.",
+  "claim.codeTaken": "Claim code already exists",
   "claim.guaranteeId": "Guarantee No.",
   "claim.claimStatus.null": "Any",
   "claim.claimStatus.1": "Rejected",
@@ -207,6 +208,7 @@
   "claim.ClaimMasterPanelExt.InsureePolicyEligibilitySummary.header": "Policy Information",
   "claim.ClaimMasterPanelExt.InsureeLastVisit.header": "Insuree Last Visit",
   "ClaimMasterPanelExt.InsureeLastVisit.noOtheClaim": "No Other Visit (Claim)",
+  "ClaimMasterPanelExt.InsureeLastVisit.thisClaimIsLastVisit": "This is the last visit (Claim)",
   "claim.ClaimMasterPanelExt.InsureeLastVisit.claimCode": "Claim No.",
   "claim.ClaimMasterPanelExt.InsureeLastVisit.lastClaimAtFrom": "Visit Date From",
   "claim.ClaimMasterPanelExt.InsureeLastVisit.lastClaimAtTo": "Visit Date To",
@@ -233,5 +235,12 @@
   "claim.attachments.table.filename": "Attachment File Name",
   "claim.attachments.table.date": "Attachment Upload Date",
   "claim.filter.attachments.title": "Attachment Title",
-  "claim.filter.attachments.type": "Attachment Type"
+  "claim.filter.attachments.type": "Attachment Type",
+  "claim.edit.items.pricevaluated": "Valuated",
+  "claim.edit.services.pricevaluated": "Valuated",
+  "claim.ClaimPercentageReferralsReport.region": "Region",
+  "claim.ClaimPercentageReferralsReport.district": "District",
+  "claim.ClaimPercentageReferralsReport.dateStart": "Date From",
+  "claim.ClaimPercentageReferralsReport.dateEnd": "Date To",
+  "claim.ClaimMasterPanel.referHFLabel": "Referal HF"
 }
