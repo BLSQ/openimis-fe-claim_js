@@ -5,8 +5,8 @@ import { injectIntl } from 'react-intl';
 import { bindActionCreators } from "redux";
 import { formatMessageWithValues, withModulesManager, withHistory, Table, ProgressOrError } from "@openimis/fe-core";
 import { fetchClaimAttachments, downloadAttachment } from "../actions";
-import { Paper, Link } from "@material-ui/core";
-
+import { Paper, Link, IconButton } from "@material-ui/core";
+import ReplayIcon from "@material-ui/icons/Replay";
 
 const styles = theme => ({
     paper: theme.paper.paper,
@@ -34,25 +34,27 @@ class ClaimAttachmentPanel extends Component {
         this.defaultPageSize = props.modulesManager.getConf("fe-claim", "claimFilter.defaultPageSize", 10);
     }
 
-    query = () =>{
-        if (this.props.edited) {
-          this.props.fetchClaimAttachments(this.props.edited);
+    query = async () => {
+        if (this.props.edited?.uuid) {
+            this.props.fetchClaimAttachments(this.props.edited);
         }
     }
 
-    onChangeRowsPerPage = (cnt) =>{
+
+    onChangeRowsPerPage = (cnt) => {
         this.setState(
-            {pageSize: cnt,
-            page: 0,
-            afterCursor: null,
-            beforeCursor: null,
+            {
+                pageSize: cnt,
+                page: 0,
+                afterCursor: null,
+                beforeCursor: null,
             },
             e => this.query()
         )
     }
 
     componentDidMount() {
-      this.setState({ orderBy: null }, e => this.onChangeRowsPerPage(this.defaultPageSize))
+        this.setState({ orderBy: null }, e => this.onChangeRowsPerPage(this.defaultPageSize))
     }
 
     claimChanged = (prevProps) => (!prevProps.claim && !!this.props.claim) ||
@@ -108,28 +110,34 @@ class ClaimAttachmentPanel extends Component {
         this.props.downloadAttachment(a);
     };
 
+    reload = () => {
+        if (this.props.edited?.uuid) {
+            this.props.fetchClaimAttachments(this.props.edited);
+        }
+    }
+
     fileSelected = (f, i) => {
         if (!!f.target.files) {
-          const file = f.target.files[0];
-          let claimAttachments = [...this.state.claimAttachments];
-          claimAttachments[i].filename = file.name;
-          claimAttachments[i].mime = file.type;
+            const file = f.target.files[0];
+            let claimAttachments = [...this.state.claimAttachments];
+            claimAttachments[i].filename = file.name;
+            claimAttachments[i].mime = file.type;
         }
     };
 
     formatFileName(a, i) {
         if (!!a.id)
-          return (
-            <Link onClick={(e) => this.download(a)} reset={this.state.reset}>
-              {a.filename || ""}
-            </Link>
-          );
+            return (
+                <Link onClick={(e) => this.download(a)} reset={this.state.reset}>
+                    {a.filename || ""}
+                </Link>
+            );
         if (!!a.filename) return <i>{a.filename}</i>;
         return (
-          <IconButton variant="contained" component="label">
-            <FileIcon />
-            <input type="file" style={{ display: "none" }} onChange={(f) => this.fileSelected(f, i)} />
-          </IconButton>
+            <IconButton variant="contained" component="label">
+                <FileIcon />
+                <input type="file" style={{ display: "none" }} onChange={(f) => this.fileSelected(f, i)} />
+            </IconButton>
         );
     }
 
@@ -152,28 +160,33 @@ class ClaimAttachmentPanel extends Component {
 
         ]
 
-
         return (
             <div className={classes.page} >
 
                 < ProgressOrError progress={fetchingClaimAttachments} error={errorClaimAttachments} />
 
-                <Paper className={classes.paper}><Table
-                    module="programs"
-                    //fetch={this.props.fetchClaimAttachments}
-                    header={formatMessageWithValues(intl, "claim", "claim.attachments.table")}
-                    headers={headers}
-                    itemFormatters={itemFormatters}
-                    items={claimAttachments}
-                    withPagination={true}
-                    page={this.state.page}
-                    pageSize={this.state.pageSize}
-                    onChangePage={this.onChangePage}
-                    onChangeRowsPerPage={this.onChangeRowsPerPage}
-                    rowsPerPageOptions={this.rowsPerPageOptions}
-                    defaultPageSize={this.defaultPageSize}
-                    rights={this.rights}
-                /></Paper>
+                <Paper className={classes.paper}>
+                    <div style={{ textAlign: 'end' }}>
+                        <IconButton variant="contained" component="label" onClick={this.reload}>
+                            <ReplayIcon />
+                        </IconButton>
+                    </div>
+                    <Table
+                        module="programs"
+                        //fetch={this.props.fetchClaimAttachments}
+                        header={formatMessageWithValues(intl, "claim", "claim.attachments.table")}
+                        headers={headers}
+                        itemFormatters={itemFormatters}
+                        items={this.props.edited?.uuid ? claimAttachments : null}
+                        withPagination={true}
+                        page={this.state.page}
+                        pageSize={this.state.pageSize}
+                        onChangePage={this.onChangePage}
+                        onChangeRowsPerPage={this.onChangeRowsPerPage}
+                        rowsPerPageOptions={this.rowsPerPageOptions}
+                        defaultPageSize={this.defaultPageSize}
+                        rights={this.rights}
+                    /></Paper>
 
             </div>
         )
