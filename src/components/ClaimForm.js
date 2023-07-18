@@ -27,6 +27,7 @@ import _ from "lodash";
 import ClaimMasterPanel from "./ClaimMasterPanel";
 import ClaimChildPanel from "./ClaimChildPanel";
 import ClaimFeedbackPanel from "./ClaimFeedbackPanel";
+import ClaimAttachmentPanel from "./ClaimAttachmentPanel";
 
 import { RIGHT_ADD, RIGHT_LOAD, RIGHT_PRINT } from "../constants";
 
@@ -298,8 +299,9 @@ class ClaimForm extends Component {
               title="edit.title"
               titleParams={{ code: this.state.claim.code }}
               HeadPanel={ClaimMasterPanel}
-              Panels={!!forFeedback ? [ClaimFeedbackPanel] : [ClaimServicesPanel, ClaimItemsPanel]}
+              Panels={!!forFeedback ? [ClaimFeedbackPanel] : [ClaimServicesPanel, ClaimItemsPanel, ClaimAttachmentPanel]}
               openDirty={save}
+              onEditedChanged={this.onEditedChanged}
               {...editingProps}
             />
             <Contributions contributionKey={CLAIM_FORM_CONTRIBUTION_KEY} {...editingProps}/>
