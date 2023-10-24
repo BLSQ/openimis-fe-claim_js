@@ -438,6 +438,7 @@ class ClaimMasterPanel extends FormPanel {
                 onChange={(v, s) => this.updateAttribute("admin", v)}
                 readOnly
                 required
+                restrictSelf={true}
               />
             </Grid>
           }
