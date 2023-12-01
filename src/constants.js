@@ -7,6 +7,7 @@ export const APPROVAL_STATUS = [1, 2];
 export const REJECTION_REASONS = _.range(-1, 20);
 export const FEEDBACK_ASSESSMENTS = _.range(-1, 6);
 export const YES_NO_NA = ["Y", "N", "NA"];
+export const YES_NO = ["Y", "N"];
 
 export const MODULE_NAME = "claim";
 

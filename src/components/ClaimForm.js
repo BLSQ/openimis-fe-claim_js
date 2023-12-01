@@ -176,6 +176,10 @@ class ClaimForm extends Component {
     // if (!this.state.claim.dischargeDiagnosis) return false;
     if (!this.state.claim.jsonExt.maternalDeath) return false;
     if (!this.state.claim.jsonExt.childDeath) return false;
+    if (!this.state.claim.jsonExt.rural) return false;
+    if (!this.state.claim.jsonExt.idp) return false;
+    if (!this.state.claim.jsonExt.vulnerable) return false;
+    if (!this.state.claim.jsonExt.disability) return false;
     if (!forFeedback) {
       if (!this.state.claim.items && !this.state.claim.services) {
         return !!this.canSaveClaimWithoutServiceNorItem;

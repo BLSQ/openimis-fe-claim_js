@@ -30,7 +30,7 @@ import ClaimStatusPicker from "../pickers/ClaimStatusPicker";
 import FeedbackStatusPicker from "../pickers/FeedbackStatusPicker";
 import ReviewStatusPicker from "../pickers/ReviewStatusPicker";
 import _debounce from "lodash/debounce";
-import { YES_NO_NA } from "../constants";
+import {YES_NO, YES_NO_NA} from "../constants";
 
 const CLAIM_MASTER_PANEL_CONTRIBUTION_KEY = "claim.MasterPanel";
 
@@ -321,7 +321,7 @@ class ClaimMasterPanel extends FormPanel {
               module="claim"
               id="Claim.secDiagnosis1"
               field={
-                <Grid item xs={3} className={classes.item}>
+                <Grid item xs={4} className={classes.item}>
                   <TextInput
                     module="claim"
                     label="dischargeDiagnosis"
@@ -338,7 +338,7 @@ class ClaimMasterPanel extends FormPanel {
               module="claim"
               id="Claim.maternalDeath"
               field={
-                <Grid item xs={3} className={classes.item}>
+                <Grid item xs={1} className={classes.item}>
                     <ConstantBasedPicker
                         module="claim"
                         label="maternalDeath"
@@ -357,7 +357,7 @@ class ClaimMasterPanel extends FormPanel {
               module="claim"
               id="Claim.childDeath"
               field={
-                <Grid item xs={3} className={classes.item}>
+                <Grid item xs={1} className={classes.item}>
                     <ConstantBasedPicker
                         module="claim"
                         label="childDeath"
@@ -372,6 +372,58 @@ class ClaimMasterPanel extends FormPanel {
                 </Grid>
               }
             />
+            <Grid item xs={1} className={classes.item}>
+                <ConstantBasedPicker
+                    module="claim"
+                    label="rural"
+                    required
+                    onChange={(value) =>
+                      this.updateExt("rural", value)
+                    }
+                    constants={YES_NO}
+                    withNull
+                    value={edited.jsonExt.rural}
+                  />
+              </Grid>
+              <Grid item xs={1} className={classes.item}>
+                <ConstantBasedPicker
+                    module="claim"
+                    label="idp"
+                    required
+                    onChange={(value) =>
+                      this.updateExt("idp", value)
+                    }
+                    constants={YES_NO}
+                    withNull
+                    value={edited.jsonExt.idp}
+                  />
+              </Grid>
+              <Grid item xs={1} className={classes.item}>
+                <ConstantBasedPicker
+                    module="claim"
+                    label="vulnerable"
+                    required
+                    onChange={(value) =>
+                      this.updateExt("vulnerable", value)
+                    }
+                    constants={YES_NO}
+                    withNull
+                    value={edited.jsonExt.vulnerable}
+                  />
+              </Grid>
+              <Grid item xs={1} className={classes.item}>
+                <ConstantBasedPicker
+                    module="claim"
+                    required
+                    label="disability"
+                    onChange={(value) =>
+                      this.updateExt("disability", value)
+                    }
+                    constants={YES_NO}
+                    withNull
+                    value={edited.jsonExt.disability}
+                  />
+              </Grid>
           </Fragment>
         )}
         <ControlledField
