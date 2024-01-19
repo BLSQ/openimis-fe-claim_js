@@ -90,7 +90,7 @@ class ClaimFeedbackPanel extends Component {
   };
 
   _tristate = (f) => (
-    <Grid container alignItems="center" justify="center" direction="column">
+    <Grid container alignItems="center" justifyContent="center" direction="column">
       <Grid item>
         <FormattedMessage module="claim" id={`Feedback.${f}`} />
       </Grid>
@@ -129,7 +129,7 @@ class ClaimFeedbackPanel extends Component {
           </Grid>
           <Grid item xs={3} />
           <Grid item xs={6}>
-            <Grid container alignItems="center" justify="center">
+            <Grid container alignItems="center" justifyContent="center">
               <ControlledField
                 module="claim"
                 id="Feedback.date"
@@ -213,7 +213,7 @@ class ClaimFeedbackPanel extends Component {
               <Fragment>
                 <Grid item xs={2} />
                 <Grid item xs={8} className={classes.item}>
-                  <Grid container alignItems="center" justify="center" direction="column">
+                  <Grid container alignItems="center" justifyContent="center" direction="column">
                     <Grid item className={classes.assessmentContainer}>
                       <Typography gutterBottom>
                         <FormattedMessage module="claim" id="Feedback.overallAssesment" />

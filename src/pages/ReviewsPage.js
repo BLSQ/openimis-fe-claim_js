@@ -198,7 +198,7 @@ class RawRandomAndValueFilters extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container justify="center" alignItems="center" direction="row">
+      <Grid container justifyContent="center" alignItems="center" direction="row">
         <Grid item xs={3} className={classes.item}>
           <NumberInput
             module="claim"
@@ -471,7 +471,7 @@ class ReviewsPage extends Component {
   provideFeedback = (c) => historyPush(this.props.modulesManager, this.props.history, "claim.route.feedback", [c.uuid]);
 
   feedbackColFormatter = (c) => (
-    <Grid container justify="flex-end" alignItems="center">
+    <Grid container justifyContent="flex-end" alignItems="center">
       <Grid item>
         <PublishedComponent
           pubRef="claim.FeedbackStatusPicker"
@@ -546,7 +546,7 @@ class ReviewsPage extends Component {
     }
   };
   reviewColFormatter = (c) => (
-    <Grid container justify="flex-end" alignItems="center">
+    <Grid container justifyContent="flex-end" alignItems="center">
       <Grid item>
         <PublishedComponent
           pubRef="claim.ReviewStatusPicker"

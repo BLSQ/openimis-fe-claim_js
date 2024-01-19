@@ -21,6 +21,9 @@ import ClaimFilterbyAttachment from "./components/ClaimFilterbyAttachment";
 import ClaimsOverviewReport from "./reports/ClaimsOverviewReport";
 import ClaimHistoryReport from "./reports/ClaimHistoryReport";
 import ClaimsPrimaryOperationalIndicators from "./reports/ClaimsPrimaryOperationalIndicators";
+import NhiaClaimsPaidReport from "./reports/NhiaClaimsPaidReport";
+import NhiaClaimsRejectedReport from "./reports/NhiaClaimsRejectedReport";
+import NhiaClaimsPendingReport from "./reports/NhiaClaimsPendingReport";
 
 const ROUTE_HEALTH_FACILITIES = "claim/healthFacilities";
 const ROUTE_CLAIM_EDIT = "claim/healthFacilities/claim";
@@ -125,6 +128,33 @@ const DEFAULT_CONFIG = {
         params.requested_year = values.year;
         return params;
       },
+    },
+    {
+      key: "nhia_claims_paid",
+      component: NhiaClaimsPaidReport,
+      isValid: (values) => values.startDate && values.endDate,
+      getParams: (values) => ({
+        start_date: values.startDate,
+        end_date: values.endDate,
+      }),
+    },
+    {
+      key: "nhia_claims_rejected",
+      component: NhiaClaimsRejectedReport,
+      isValid: (values) => values.startDate && values.endDate,
+      getParams: (values) => ({
+        start_date: values.startDate,
+        end_date: values.endDate,
+      }),
+    },
+    {
+      key: "nhia_claims_pending",
+      component: NhiaClaimsPendingReport,
+      isValid: (values) => values.startDate && values.endDate,
+      getParams: (values) => ({
+        start_date: values.startDate,
+        end_date: values.endDate,
+      }),
     },
   ],
   "refs": [
