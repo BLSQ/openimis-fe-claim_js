@@ -172,6 +172,7 @@ class Head extends Component {
                 value={this._filterValue("region")}
                 withNull={true}
                 onChange={this._onChangeRegion}
+                reset={this.state.reset}
               />
             </Grid>
           }
@@ -223,6 +224,7 @@ class Head extends Component {
                 region={this._filterValue("region")}
                 district={this._filterValue("district")}
                 required={true}
+                restrictSelf={true}
               />
             </Grid>
           }
