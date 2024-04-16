@@ -18,6 +18,7 @@ import { Grid } from "@material-ui/core";
 import _ from "lodash";
 import ClaimAdminPicker from "../pickers/ClaimAdminPicker";
 import { claimedAmount, approvedAmount } from "../helpers/amounts";
+import { splitISODate } from "../helpers/dates";
 import {
   claimCodeSetValid,
   claimCodeValidationCheck,
@@ -53,7 +54,7 @@ class ClaimMasterPanel extends FormPanel {
 
   constructor(props) {
     super(props);
-    this.codeMaxLength = props.modulesManager.getConf("fe-claim", "claimForm.codeMaxLength", 8);
+    this.codeMaxLength = props.modulesManager.getConf("fe-claim", "claimForm.codeMaxLength", 100);
     this.guaranteeIdMaxLength = props.modulesManager.getConf("fe-claim", "claimForm.guaranteeIdMaxLength", 50);
     this.showAdjustmentAtEnter = props.modulesManager.getConf("fe-claim", "claimForm.showAdjustmentAtEnter", false);
     this.insureePicker = props.modulesManager.getConf(
@@ -87,6 +88,18 @@ class ClaimMasterPanel extends FormPanel {
     }
 
     return totalServices + totalItems;
+  }
+
+  selectInsureeAndGenerateClaimCode(insuree) {
+    if (insuree !== undefined && insuree !== null) {
+      const splitDate = splitISODate(new Date().toISOString());
+      const formattedDate = `${splitDate.year}${splitDate.month}${splitDate.day}${splitDate.hours}${splitDate.minutes}${splitDate.seconds}`;
+      const code = `${this.props.edited.healthFacility.code}-${insuree.chfId}-${formattedDate}`;
+      this.updateAttributes({
+        "insuree": insuree,
+        "code": code,
+      });
+    }
   }
 
   render() {
@@ -142,7 +155,7 @@ class ClaimMasterPanel extends FormPanel {
                 pubRef={this.insureePicker}
                 value={edited.insuree}
                 reset={reset}
-                onChange={(v, s) => this.updateAttribute("insuree", v)}
+                onChange={(v) => this.selectInsureeAndGenerateClaimCode(v)}
                 readOnly={ro}
                 required={true}
               />
