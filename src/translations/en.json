@@ -287,6 +287,8 @@
   "claim.NhiaClaimsRejectedReport.endDate": "Date To",
   "claim.NhiaClaimsPendingReport.startDate": "Date From",
   "claim.NhiaClaimsPendingReport.endDate": "Date To",
+  "claim.NhiaClaimDetailsReport.startDate": "Date From",
+  "claim.NhiaClaimDetailsReport.endDate": "Date To",
   "claim.attachmentType.null": "Any",
   "claim.attachmentType.Bill": "Bill",
   "claim.attachmentType.Medical": "Medical",

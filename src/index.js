@@ -24,6 +24,7 @@ import ClaimsPrimaryOperationalIndicators from "./reports/ClaimsPrimaryOperation
 import NhiaClaimsPaidReport from "./reports/NhiaClaimsPaidReport";
 import NhiaClaimsRejectedReport from "./reports/NhiaClaimsRejectedReport";
 import NhiaClaimsPendingReport from "./reports/NhiaClaimsPendingReport";
+import NhiaClaimDetailsReport from "./reports/NhiaClaimDetailsReport";
 
 const ROUTE_HEALTH_FACILITIES = "claim/healthFacilities";
 const ROUTE_CLAIM_EDIT = "claim/healthFacilities/claim";
@@ -155,6 +156,20 @@ const DEFAULT_CONFIG = {
         start_date: values.startDate,
         end_date: values.endDate,
       }),
+    },
+    {
+      key: "nhia_claim_details",
+      component: NhiaClaimDetailsReport,
+      isValid: (values) => values.startDate && values.endDate,
+      getParams: (values) => {
+        const params = {}
+        if (!!values.status) {
+          params.requested_status = values.status;
+        }
+        params.start_date = values.startDate;
+        params.end_date = values.endDate;
+        return params;
+      },
     },
   ],
   "refs": [
